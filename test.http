@@ -1,0 +1,11 @@
+GET http://localhost/status HTTP/1.1
+
+###
+
+
+POST http://localhost/status HTTP/1.1
+content-type: application/json
+
+{
+    "name": "zibe"
+}
