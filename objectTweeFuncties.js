@@ -1,38 +1,24 @@
-const sortObjectByKey = (unordered, reverse = false) => {
-  if (reverse) {
-    const ordered = Object.keys(unordered)
-      .sort()
-      .reverse()
-      .reduce((obj, key) => {
-        obj[key] = unordered[key];
-        return obj;
-      }, {});
-    return ordered;
-  } else {
-    const ordered = Object.keys(unordered)
-      .sort()
-      .reduce((obj, key) => {
-        obj[key] = unordered[key];
-        return obj;
-      }, {});
-    return ordered;
-  }
+const sortObjectByKey = (unordered) => {
+  const ordered = Object.keys(unordered)
+    .sort()
+    .reverse()
+    .reduce((obj, key) => {
+      obj[key] = unordered[key];
+      return obj;
+    }, {});
+  return ordered;
 };
 
-const sortObjectByValue = (maxSpeed) => {
-  maxSpeed = sortObjectByKey(maxSpeed, true);
-
+const sortObjectByValue = (mediumObject) => {
+  mediumObject = sortObjectByKey(mediumObject);
   let sortable = [];
-  for (var vehicle in maxSpeed) {
-    sortable.push([vehicle, maxSpeed[vehicle]]);
+  for (let medium in mediumObject) {
+    sortable.push([medium, mediumObject[medium]]);
   }
-
   sortable.sort(function (a, b) {
     return a[1] - b[1];
   });
-
   sortable = sortable.reverse();
-
   const responseObject = {};
   for (const thing of sortable) {
     responseObject[thing[0]] = thing[1];

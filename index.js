@@ -30,12 +30,20 @@ async function main() {
       if (!cities[point.city]) {
         cities[point.city] = 0;
       }
-
       cities[point.city] += 1;
     }
 
+    const dataNoCity = [];
+    for (const point of data) {
+      const newPoint = { ...point };
+      delete newPoint.city;
+      dataNoCity.push(newPoint);
+    }
+
     const response = {
-      data: data[0],
+      data1: dataNoCity[0],
+      data2: dataNoCity[1],
+      data3: dataNoCity[2],
       cities: sortObjectByValue(cities),
     };
 
