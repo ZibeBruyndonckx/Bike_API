@@ -1,11 +1,17 @@
+GET http://localhost/bikes-per-city HTTP/1.1
+
+###
+
 GET http://localhost/status HTTP/1.1
 
 ###
 
 
-POST http://localhost/status HTTP/1.1
+POST http://localhost/info HTTP/1.1
 content-type: application/json
 
 {
-    "name": "zibetest1"
+    "name": "zibetest1",
+    "age": 16,
+    "sex": "male"
 }
