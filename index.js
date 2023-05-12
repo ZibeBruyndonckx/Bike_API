@@ -35,30 +35,43 @@ async function main() {
       cities[point.city] += 1;
     }
 
-    const powers = [];
+    const ages = {};
     for (let i = 0; i < numberOfThings && i < data.length; i++) {
       const point = data[i];
-      if (!powers[point.power]) {
-        powers[point.power] = 0;
+      if (!ages[point.age]) {
+        ages[point.age] = 0;
       }
-      powers[point.power] += 1;
+      ages[point.age] += 1;
     }
 
-    const dataNoCity = [];
+    const owners = {};
+    for (let i = 0; i < numberOfThings && i < data.length; i++) {
+      const point = data[i];
+      if (!owners[point.owner]) {
+        owners[point.owner] = 0;
+      }
+      owners[point.owner] += 1;
+    }
+
+    const dataNoThings = [];
     for (const point of data) {
       const newPoint = { ...point };
       delete newPoint.city;
-      dataNoCity.push(newPoint);
+      delete newPoint.age;
+      delete newPoint.owner;
+      dataNoThings.push(newPoint);
     }
 
     let datas = [];
-    for (let i = 0; i < numberOfThings && i < dataNoCity.length; i++) {
-      datas.push(dataNoCity[i]);
+    for (let i = 0; i < numberOfThings && i < dataNoThings.length; i++) {
+      datas.push(dataNoThings[i]);
     }
 
     const response = {
-      data: datas,
+      datas: datas,
       cities: sortObjectByValue(cities),
+      ages: ages,
+      owners: owners,
     };
 
     res.status(200).send(response);
