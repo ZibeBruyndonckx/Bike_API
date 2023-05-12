@@ -17,8 +17,6 @@ const sortObjectByKey = (unordered, reverse = false) => {
       }, {});
     return ordered;
   }
-
-  return {};
 };
 
 const sortObjectByValue = (maxSpeed) => {

@@ -35,8 +35,8 @@ async function main() {
     }
 
     const response = {
-      cities: sortObjectByValue(cities),
       data: data[0],
+      cities: sortObjectByValue(cities),
     };
 
     res.status(200).send(response);
