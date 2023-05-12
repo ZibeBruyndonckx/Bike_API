@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const csv = require("csv-parser");
 const fs = require("fs");
 
-const { sortObjectByValue } = require("./objectTweeFuncties");
+const { sortObjectByValue } = require("./renameFunctions");
 
 let numberOfThings = 10;
 
