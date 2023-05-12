@@ -5,7 +5,7 @@ const fs = require("fs");
 
 const { sortObjectByValue } = require("./renameFunctions");
 
-let numberOfThings = 10;
+let numberOfThings = 150;
 
 const data = [];
 fs.createReadStream("Used_Bikes.csv")
@@ -70,7 +70,7 @@ async function main() {
     const response = {
       datas: datas,
       cities: sortObjectByValue(cities),
-      ages: ages,
+      ages: sortObjectByValue(ages),
       owners: owners,
     };
 
