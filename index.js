@@ -25,7 +25,7 @@ async function main() {
   // parse application/json
   app.use(bodyParser.json());
 
-  app.get("/bikes-per-city", function (req, res) {
+  app.get("/bikes-per-Thing", function (req, res) {
     const cities = {};
     for (let i = 0; i < numberOfThings && i < data.length; i++) {
       const point = data[i];
