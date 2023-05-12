@@ -28,6 +28,5 @@ const sortObjectByValue = (mediumObject) => {
 };
 
 module.exports = {
-  sortObjectByKey,
   sortObjectByValue,
 };

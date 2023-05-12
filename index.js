@@ -3,7 +3,9 @@ const bodyParser = require("body-parser");
 const csv = require("csv-parser");
 const fs = require("fs");
 
-const { sortObjectByKey, sortObjectByValue } = require("./objectTweeFuncties");
+const { sortObjectByValue } = require("./objectTweeFuncties");
+
+let numberOfThings = 10;
 
 const data = [];
 fs.createReadStream("Used_Bikes.csv")
@@ -25,12 +27,21 @@ async function main() {
 
   app.get("/bikes-per-city", function (req, res) {
     const cities = {};
-    for (let i = 0; i < Infinity && i < data.length; i++) {
+    for (let i = 0; i < numberOfThings && i < data.length; i++) {
       const point = data[i];
       if (!cities[point.city]) {
         cities[point.city] = 0;
       }
       cities[point.city] += 1;
+    }
+
+    const powers = [];
+    for (let i = 0; i < numberOfThings && i < data.length; i++) {
+      const point = data[i];
+      if (!powers[point.power]) {
+        powers[point.power] = 0;
+      }
+      powers[point.power] += 1;
     }
 
     const dataNoCity = [];
@@ -40,10 +51,13 @@ async function main() {
       dataNoCity.push(newPoint);
     }
 
+    let datas = [];
+    for (let i = 0; i < numberOfThings && i < dataNoCity.length; i++) {
+      datas.push(dataNoCity[i]);
+    }
+
     const response = {
-      data1: dataNoCity[0],
-      data2: dataNoCity[1],
-      data3: dataNoCity[2],
+      data: datas,
       cities: sortObjectByValue(cities),
     };
 
@@ -57,7 +71,7 @@ async function main() {
   app.post("/info", function (req, res) {
     const name = req.body.name;
     const age = req.body.age;
-    res.status(200).send("my name is " + name + " and I am " + age + ".");
+    res.status(200).send("My name is " + name + " and I am " + age + ".");
   });
 
   app.listen(80);
