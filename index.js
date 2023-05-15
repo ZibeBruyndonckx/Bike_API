@@ -5,7 +5,7 @@ const fs = require("fs");
 
 const { sortObjectByValue } = require("./renameFunctions");
 
-let numberOfThings = 150;
+let numberOfThings = Infinity;
 
 const data = [];
 fs.createReadStream("Used_Bikes.csv")
@@ -25,7 +25,7 @@ async function main() {
   // parse application/json
   app.use(bodyParser.json());
 
-  app.get("/bikes-per-Thing", function (req, res) {
+  app.get("/bikes-per-?", function (req, res) {
     const cities = {};
     for (let i = 0; i < numberOfThings && i < data.length; i++) {
       const point = data[i];
@@ -72,6 +72,57 @@ async function main() {
       cities: sortObjectByValue(cities),
       ages: sortObjectByValue(ages),
       owners: owners,
+    };
+
+    res.status(200).send(response);
+  });
+
+  app.get("/bikes-per-owner", function (req, res) {
+    const owners = {};
+    for (let i = 0; i < numberOfThings && i < data.length; i++) {
+      const point = data[i];
+      if (!owners[point.owner]) {
+        owners[point.owner] = 0;
+      }
+      owners[point.owner] += 1;
+    }
+
+    const response = {
+      owners: owners,
+    };
+
+    res.status(200).send(response);
+  });
+
+  app.get("/bikes-per-age", function (req, res) {
+    const ages = {};
+    for (let i = 0; i < numberOfThings && i < data.length; i++) {
+      const point = data[i];
+      if (!ages[point.age]) {
+        ages[point.age] = 0;
+      }
+      ages[point.age] += 1;
+    }
+
+    const response = {
+      ages: sortObjectByValue(ages),
+    };
+
+    res.status(200).send(response);
+  });
+
+  app.get("/bikes-per-city", function (req, res) {
+    const cities = {};
+    for (let i = 0; i < numberOfThings && i < data.length; i++) {
+      const point = data[i];
+      if (!cities[point.city]) {
+        cities[point.city] = 0;
+      }
+      cities[point.city] += 1;
+    }
+
+    const response = {
+      cities: sortObjectByValue(cities),
     };
 
     res.status(200).send(response);
