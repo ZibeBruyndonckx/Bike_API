@@ -25,6 +25,8 @@ async function main() {
   // parse application/json
   app.use(bodyParser.json());
 
+  // API: bikes-per-?
+  //#region
   app.get("/bikes-per-?", function (req, res) {
     const cities = {};
     for (let i = 0; i < numberOfThings && i < data.length; i++) {
@@ -76,7 +78,10 @@ async function main() {
 
     res.status(200).send(response);
   });
+  //#endregion
 
+  // API: bikes-per-owner
+  //#region
   app.get("/bikes-per-owner", function (req, res) {
     const owners = {};
     for (let i = 0; i < numberOfThings && i < data.length; i++) {
@@ -93,7 +98,10 @@ async function main() {
 
     res.status(200).send(response);
   });
+  //#endregion
 
+  // API: bikes-per-age
+  //#region
   app.get("/bikes-per-age", function (req, res) {
     const ages = {};
     for (let i = 0; i < numberOfThings && i < data.length; i++) {
@@ -110,7 +118,10 @@ async function main() {
 
     res.status(200).send(response);
   });
+  //#endregion
 
+  // API: bikes-per-city
+  //#region
   app.get("/bikes-per-city", function (req, res) {
     const cities = {};
     for (let i = 0; i < numberOfThings && i < data.length; i++) {
@@ -127,16 +138,23 @@ async function main() {
 
     res.status(200).send(response);
   });
+  //#endregion
 
+  // API: status
+  //#region
   app.get("/status", function (req, res) {
     res.status(200).send("OK");
   });
+  //#endregion
 
+  // API: info
+  //#region
   app.post("/info", function (req, res) {
     const name = req.body.name;
     const age = req.body.age;
     res.status(200).send("My name is " + name + " and I am " + age + ".");
   });
+  //#endregion
 
   app.listen(80);
 }
