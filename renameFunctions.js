@@ -27,6 +27,20 @@ const sortObjectByValue = (mediumObject) => {
   return responseObject;
 };
 
+const sortObjectByAge = (mediumObject) => {
+  const sortedAges = Object.keys(mediumObject).sort(
+    (a, b) => parseInt(a) - parseInt(b)
+  );
+
+  const sortedObject = {};
+  sortedAges.forEach((age) => {
+    sortedObject[age] = mediumObject[age];
+  });
+
+  return sortedObject;
+};
+
 module.exports = {
   sortObjectByValue,
+  sortObjectByAge,
 };

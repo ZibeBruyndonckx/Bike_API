@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const csv = require("csv-parser");
 const fs = require("fs");
 
-const { sortObjectByValue } = require("./renameFunctions");
+const { sortObjectByValue, sortObjectByAge } = require("./renameFunctions");
 
 let numberOfThings = Infinity;
 
@@ -113,7 +113,7 @@ async function main() {
     }
 
     const response = {
-      ages: sortObjectByValue(ages),
+      ages: sortObjectByAge(ages),
     };
 
     res.status(200).send(response);
