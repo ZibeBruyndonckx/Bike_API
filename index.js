@@ -71,9 +71,26 @@ async function main() {
 
     const response = {
       datas: datas,
-      cities: sortObjectByValue(cities),
-      ages: sortObjectByValue(ages),
-      owners: owners,
+    };
+
+    res.status(200).send(response);
+  });
+  //#endregion
+
+  // API: bikes-per-brand
+  //#region
+  app.get("/bikes-per-brand", function (req, res) {
+    const brands = {};
+    for (let i = 0; i < numberOfThings && i < data.length; i++) {
+      const point = data[i];
+      if (!brands[point.brand]) {
+        brands[point.brand] = 0;
+      }
+      brands[point.brand] += 1;
+    }
+
+    const response = {
+      brands: sortObjectByValue(brands),
     };
 
     res.status(200).send(response);

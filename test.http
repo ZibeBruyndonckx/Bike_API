@@ -3,6 +3,10 @@ GET http://localhost/bikes-per-? HTTP/1.1
 
 ###
 
+GET http://localhost/bikes-per-brand HTTP/1.1
+
+###
+
 GET http://localhost/bikes-per-city HTTP/1.1
 
 ###
