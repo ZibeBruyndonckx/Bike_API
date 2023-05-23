@@ -1,3 +1,4 @@
+//#region
 const sortObjectByKey = (unordered) => {
   const ordered = Object.keys(unordered)
     .sort()
@@ -8,7 +9,9 @@ const sortObjectByKey = (unordered) => {
     }, {});
   return ordered;
 };
+//#endregion
 
+//#region
 const sortObjectByValue = (mediumObject) => {
   mediumObject = sortObjectByKey(mediumObject);
   let sortable = [];
@@ -26,7 +29,9 @@ const sortObjectByValue = (mediumObject) => {
 
   return responseObject;
 };
+//#endregion
 
+//#region
 const sortObjectByAge = (mediumObject) => {
   const sortedAges = Object.keys(mediumObject).sort(
     (a, b) => parseInt(a) - parseInt(b)
@@ -39,6 +44,7 @@ const sortObjectByAge = (mediumObject) => {
 
   return sortedObject;
 };
+//#endregion
 
 module.exports = {
   sortObjectByValue,
