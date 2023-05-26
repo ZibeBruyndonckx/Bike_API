@@ -257,6 +257,10 @@ async function main() {
           bike[headers[j]] = bikeData[j];
         }
 
+        for (let k = headers.length; k < bikeData.length; k++) {
+          bike[`extra${k - headers.length + 1}`] = bikeData[k];
+        }
+
         bikes.push(bike);
       }
     }
