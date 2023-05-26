@@ -5,7 +5,7 @@ const fs = require("fs");
 
 const { sortObjectByValue, sortObjectByAge } = require("./renameFunctions");
 
-let numberOfThings = 150;
+let numberOfThings = Infinity;
 
 const data = [];
 fs.createReadStream("Used_Bikes.csv")
@@ -64,6 +64,15 @@ async function main() {
       brands[point.brand] += 1;
     }
 
+    const powers = {};
+    for (let i = 0; i < numberOfThings && i < data.length; i++) {
+      const point = data[i];
+      if (!powers[point.power]) {
+        powers[point.power] = 0;
+      }
+      powers[point.power] += 1;
+    }
+
     const dataNoThings = [];
     for (const point of data) {
       const newPoint = { ...point };
@@ -71,6 +80,7 @@ async function main() {
       delete newPoint.age;
       delete newPoint.owner;
       delete newPoint.brand;
+      delete newPoint.power;
       dataNoThings.push(newPoint);
     }
 
@@ -85,6 +95,27 @@ async function main() {
 
     res.status(200).send(response);
   });
+  //#endregion
+
+  // GET API: bikes-per-power
+  //#region
+  app.get("/bikes-per-power", function (req, res) {
+    const powers = {};
+    for (let i = 0; i < numberOfThings && i < data.length; i++) {
+      const point = data[i];
+      if (!powers[point.power]) {
+        powers[point.power] = 0;
+      }
+      powers[point.power] += 1;
+    }
+
+    const response = {
+      powers: sortObjectByAge(powers),
+    };
+
+    res.status(200).send(response);
+  });
+
   //#endregion
 
   // GET API: bikes-per-brand

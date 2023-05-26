@@ -3,6 +3,10 @@ GET http://localhost/bikes-per-? HTTP/1.1
 
 ###
 
+GET http://localhost/bikes-per-power HTTP/1.1
+
+###
+
 GET http://localhost/bikes-per-brand HTTP/1.1
 
 ###
@@ -18,6 +22,7 @@ GET http://localhost/bikes-per-age HTTP/1.1
 GET http://localhost/bikes-per-owner HTTP/1.1
 
 ###
+
 GET http://localhost/status HTTP/1.1
 
 ###
