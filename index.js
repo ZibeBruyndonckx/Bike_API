@@ -208,20 +208,29 @@ async function main() {
   // POST API:post-data
   //#region
   app.post("/post-data", function (req, res) {
-    const name = req.body.name;
-    const age = req.body.age;
-    const city = req.body.city;
-    const brand = req.body.brand;
-    const owner = req.body.owner;
-    const data = req.body.data;
+    const dataString = req.body.data;
+    const lines = dataString.split("\n");
+    const bikes = [];
+
+    for (let i = 1; i < lines.length && i < data.length; i++) {
+      const bikeData = lines[i].split(",");
+
+      const bike = {
+        bike_name: bikeData[0],
+        price: bikeData[1],
+        city: bikeData[2],
+        kms_driven: bikeData[3],
+        owner: bikeData[4],
+        age: bikeData[5],
+        power: bikeData[6],
+        brand: bikeData[7],
+      };
+
+      bikes.push(bike);
+    }
 
     const response = {
-      name: name,
-      age: age,
-      city: city,
-      brand: brand,
-      owner: owner,
-      data: data,
+      bikes: bikes,
     };
 
     res.status(200).send(response);
