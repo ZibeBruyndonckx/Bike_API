@@ -22,8 +22,9 @@ GET http://localhost/status HTTP/1.1
 
 ###
 
-POST http://localhost/post-bikes HTTP/1.1
+POST http://localhost/post-data HTTP/1.1
 Content-Type: application/json
+
 {
     "name": "test",
     "age": 0,
@@ -36,7 +37,8 @@ Content-Type: application/json
 ###
 
 POST http://localhost/info HTTP/1.1
-content-type: application/json
+Content-type: application/json
+
 {
     "name": "zibetest1",
     "age": 16,

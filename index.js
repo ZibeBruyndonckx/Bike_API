@@ -174,9 +174,9 @@ async function main() {
   });
   //#endregion
 
-  // POST API:post-bikes
+  // POST API:post-data
   //#region
-  app.post("/post-bikes", function (req, res) {
+  app.post("/post-data", function (req, res) {
     const name = req.body.name;
     const age = req.body.age;
     const city = req.body.city;
