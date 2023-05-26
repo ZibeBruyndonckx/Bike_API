@@ -22,6 +22,21 @@ GET http://localhost/status HTTP/1.1
 
 ###
 
+POST /post-bikes HTTP/1.1
+Host: localhost
+Content-Type: application/json
+
+{
+    "name": "test",
+    "age": 0,
+    "city": "example city",
+    "brand": "example brand",
+    "owner": "example owner",
+    "data": "/Used_Bikes.csv"
+}
+
+###
+
 POST http://localhost/info HTTP/1.1
 content-type: application/json
 

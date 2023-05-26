@@ -5,7 +5,7 @@ const fs = require("fs");
 
 const { sortObjectByValue, sortObjectByAge } = require("./renameFunctions");
 
-let numberOfThings = Infinity;
+let numberOfThings = 150;
 
 const data = [];
 fs.createReadStream("Used_Bikes.csv")
@@ -25,7 +25,7 @@ async function main() {
   // parse application/json
   app.use(bodyParser.json());
 
-  // API: bikes-per-?
+  // GET API: bikes-per-?
   //#region
   app.get("/bikes-per-?", function (req, res) {
     const cities = {};
@@ -77,7 +77,7 @@ async function main() {
   });
   //#endregion
 
-  // API: bikes-per-brand
+  // GET API: bikes-per-brand
   //#region
   app.get("/bikes-per-brand", function (req, res) {
     const brands = {};
@@ -97,7 +97,7 @@ async function main() {
   });
   //#endregion
 
-  // API: bikes-per-owner
+  // GET API: bikes-per-owner
   //#region
   app.get("/bikes-per-owner", function (req, res) {
     const owners = {};
@@ -117,7 +117,7 @@ async function main() {
   });
   //#endregion
 
-  // API: bikes-per-age
+  // GET API: bikes-per-age
   //#region
   app.get("/bikes-per-age", function (req, res) {
     const ages = {};
@@ -137,7 +137,7 @@ async function main() {
   });
   //#endregion
 
-  // API: bikes-per-city
+  // GEt API: bikes-per-city
   //#region
   app.get("/bikes-per-city", function (req, res) {
     const cities = {};
@@ -157,14 +157,38 @@ async function main() {
   });
   //#endregion
 
-  // API: status
+  // GET API: status
   //#region
   app.get("/status", function (req, res) {
     res.status(200).send("OK");
   });
   //#endregion
 
-  // API: info
+  // POST API:post-bikes
+  //#region
+  app.post("/post-bikes", function (req, res) {
+    const name = req.body.name;
+    const age = req.body.age;
+    const city = req.body.city;
+    const brand = req.body.brand;
+    const owner = req.body.owner;
+    const data = req.body.data;
+    numberOfThings = data.length;
+
+    const response = {
+      name: name,
+      age: age,
+      city: city,
+      brand: brand,
+      owner: owner,
+      data: data,
+    };
+
+    res.status(200).send(response);
+  });
+  //#endregion
+
+  // POST API: info
   //#region
   app.post("/info", function (req, res) {
     const name = req.body.name;
