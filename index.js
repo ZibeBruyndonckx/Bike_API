@@ -178,7 +178,7 @@ async function main() {
   });
   //#endregion
 
-  // GEt API: bikes-per-city
+  // GET API: bikes-per-city
   //#region
   app.get("/bikes-per-city", function (req, res) {
     const cities = {};
