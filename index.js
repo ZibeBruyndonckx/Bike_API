@@ -207,40 +207,6 @@ async function main() {
 
   // POST API:post-data
   //#region
-  /*app.post("/post-data", function (req, res) {
-    const dataString = req.body.data;
-    const lines = dataString.split("\n");
-    const bikes = [];
-
-    for (let i = 1; i < lines.length && i < data.length; i++) {
-      const bikeData = lines[i].split(",");
-
-      const bike = {
-        bike_name: bikeData[0],
-        price: bikeData[1],
-        city: bikeData[2],
-        kms_driven: bikeData[3],
-        owner: bikeData[4],
-        age: bikeData[5],
-        power: bikeData[6],
-        brand: bikeData[7],
-      };
-
-      for (let j = 8; j < bikeData.length && j < data.length; j++) {
-        bike[`extra_${j - 7}`] = bikeData[j];
-      }
-
-      bikes.push(bike);
-    }
-
-    const response = {
-      bikes: bikes,
-    };
-
-    res.status(200).send(response);
-  });*/
-  //#endregion
-
   app.post("/post-data", function (req, res) {
     const dataString = req.body.data;
     const lines = dataString.split("\n");
@@ -271,6 +237,7 @@ async function main() {
 
     res.status(200).send(response);
   });
+  //#endregion
 
   // POST API: info
   //#region
