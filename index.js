@@ -55,12 +55,22 @@ async function main() {
       owners[point.owner] += 1;
     }
 
+    const brands = {};
+    for (let i = 0; i < numberOfThings && i < data.length; i++) {
+      const point = data[i];
+      if (!brands[point.brand]) {
+        brands[point.brand] = 0;
+      }
+      brands[point.brand] += 1;
+    }
+
     const dataNoThings = [];
     for (const point of data) {
       const newPoint = { ...point };
       delete newPoint.city;
       delete newPoint.age;
       delete newPoint.owner;
+      delete newPoint.brand;
       dataNoThings.push(newPoint);
     }
 
@@ -173,7 +183,6 @@ async function main() {
     const brand = req.body.brand;
     const owner = req.body.owner;
     const data = req.body.data;
-    numberOfThings = data.length;
 
     const response = {
       name: name,
