@@ -47,17 +47,17 @@ Content-type: application/json
 
 ###
 
-GET http://localhost/bikes?city=Delhi HTTP/1.1
+GET http://localhost/number-of-bikes?city=Delhi HTTP/1.1
 
 
 ###
 
-GET http://localhost/bikes?city=Kolkata HTTP/1.1
+GET http://localhost/info-on-bikes?city=Pune HTTP/1.1
 
 
 ###
 
-GET http://localhost/bikes?city=Delhi&minpower=150 HTTP/1.1
+GET http://localhost/number-of-bikes?city=Delhi&minpower=150 HTTP/1.1
 
 
 ###

@@ -248,9 +248,38 @@ async function main() {
   });
   //#endregion
 
-  // GET API: bikes?city=Delhi
+  // GET API: number-of-bikes?city=
   //#region
-  app.get("/bikes", function (req, res) {
+  app.get("/number-of-bikes", function (req, res) {
+    const city = req.query.city;
+    const filteredBikes = data.filter((point) => point.city === city);
+    const numberOfBikes = filteredBikes.length;
+
+    const response = {
+      [city]: numberOfBikes,
+    };
+
+    res.status(200).send(response);
+  });
+  //#endregion
+
+  // GET API: info-on-bikes?city=
+  //#region
+  app.get("/info-on-bikes", function (req, res) {
+    const city = req.query.city;
+    const filteredBikes = data.filter((point) => point.city === city);
+
+    const response = {
+      [city]: filteredBikes,
+    };
+
+    res.status(200).send(response);
+  });
+  //#endregion
+
+  // GET API: number-of-bikes?city=&minpower=
+  //#region
+  app.get("/number-of-bikes", function (req, res) {
     const city = req.query.city;
     const filteredBikes = data.filter((point) => point.city === city);
     const numberOfBikes = filteredBikes.length;
