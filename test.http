@@ -44,3 +44,20 @@ Content-type: application/json
     "age": 16,
     "sex": "male"
 }
+
+###
+
+GET http://localhost/bikes?city=Delhi HTTP/1.1
+
+
+###
+
+GET http://localhost/bikes?city=Kolkata HTTP/1.1
+
+
+###
+
+GET http://localhost/bikes?city=Delhi&minpower=150 HTTP/1.1
+
+
+###
