@@ -61,7 +61,7 @@ GET http://localhost/info-on-bikes?city=Pune HTTP/1.1
 
 ###
 
-GET http://localhost/filter-bikes?city=Jaipur&minpower=150&maxpower=160&minage=2&maxage=4&brand=Yamaha HTTP/1.1
+GET http://localhost/filter-bikes?city=Jaipur&minpower=150&maxpower=160&minage=2&maxage=4&brand=Yamaha&minkms_driven=8000&maxkms_driven=14000 HTTP/1.1
 
 
 ###
