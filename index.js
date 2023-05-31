@@ -269,7 +269,7 @@ async function main() {
   });
   //#endregion
 
-  // GET API: number-of-bikes?city=
+  // *GET API: number-of-bikes?city=
   //#region
   app.get("/number-of-bikes", function (req, res) {
     const city = req.query.city;
@@ -284,7 +284,7 @@ async function main() {
   });
   //#endregion
 
-  // GET API: info-on-bikes?city=
+  // *GET API: info-on-bikes?city=
   //#region
   app.get("/info-on-bikes", function (req, res) {
     const city = req.query.city;
@@ -298,7 +298,7 @@ async function main() {
   });
   //#endregion
 
-  // GET API: number-of-bikes?city=&minpower=&maxpower=&minage=&maxage=&brand=&minkms_driven=&maxkms_driven=
+  // GET API: number-of-bikes?city=&minpower=&maxpower=&minage=&maxage=&brand=&minkms_driven=&maxkms_driven=&minprice=&maxprice=
   //#region
   app.get("/filter-bikes", function (req, res) {
     const city = req.query.city;
@@ -309,6 +309,8 @@ async function main() {
     const brand = req.query.brand;
     const minkms_driven = parseInt(req.query.minkms_driven);
     const maxkms_driven = parseInt(req.query.maxkms_driven);
+    const minprice = parseInt(req.query.minprice);
+    const maxprice = parseInt(req.query.maxprice);
     const filteredBikes = data.filter((point) => {
       const isSameCity = point.city === city;
       const isMinPower = point.power >= minpower;
@@ -318,6 +320,8 @@ async function main() {
       const isBrand = point.brand === brand;
       const isMinKmsDriven = point.kms_driven >= minkms_driven;
       const isMaxKmsDriven = point.kms_driven <= maxkms_driven;
+      const isMinPrice = point.price >= minprice;
+      const isMaxPrice = point.price <= maxprice;
       return (
         isSameCity &&
         isMinPower &&
@@ -326,7 +330,9 @@ async function main() {
         isMaxAge &&
         isBrand &&
         isMinKmsDriven &&
-        isMaxKmsDriven
+        isMaxKmsDriven &&
+        isMinPrice &&
+        isMaxPrice
       );
     });
     /*const numberOfBikes = filteredBikes.length;
