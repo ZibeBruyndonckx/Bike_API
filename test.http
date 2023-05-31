@@ -47,6 +47,10 @@ Content-type: application/json
 
 ###
 
+GET http://localhost/number-of-bikes?brand=Hero HTTP/1.1
+
+### 
+
 GET http://localhost/number-of-bikes?city=Delhi HTTP/1.1
 
 
@@ -57,7 +61,7 @@ GET http://localhost/info-on-bikes?city=Pune HTTP/1.1
 
 ###
 
-GET http://localhost/number-of-bikes?city=Delhi&minpower=150 HTTP/1.1
+GET http://localhost/filter-bikes?city=Jaipur&minpower=150&maxpower=160&minage=2&maxage=4 HTTP/1.1
 
 
 ###

@@ -10,9 +10,15 @@ let numberOfThings = Infinity;
 const data = [];
 fs.createReadStream("Used_Bikes.csv")
   .pipe(csv())
-  .on("data", (d) => data.push(d))
+  .on("data", (d) => {
+    d.price = parseFloat(d.price);
+    d.kms_driven = parseFloat(d.kms_driven);
+    d.age = parseFloat(d.age);
+    d.power = parseFloat(d.power);
+    data.push(d);
+  })
   .on("end", () => {
-    console.log(data);
+    //console.log(data);
     main();
   });
 
@@ -248,6 +254,21 @@ async function main() {
   });
   //#endregion
 
+  // GET API: number-of-bikes?brand=
+  //#region
+  app.get("/number-of-bikes", function (req, res) {
+    const brand = req.query.brand;
+    const filteredBikes = data.filter((point) => point.brand === brand);
+    const numberOfBikes = filteredBikes.length;
+
+    const response = {
+      [brand]: numberOfBikes,
+    };
+
+    res.status(200).send(response);
+  });
+  //#endregion
+
   // GET API: number-of-bikes?city=
   //#region
   app.get("/number-of-bikes", function (req, res) {
@@ -277,18 +298,30 @@ async function main() {
   });
   //#endregion
 
-  // GET API: number-of-bikes?city=&minpower=
+  // GET API: number-of-bikes?city=&minpower=&maxpower=&minage=&maxage=
   //#region
-  app.get("/number-of-bikes", function (req, res) {
+  app.get("/filter-bikes", function (req, res) {
     const city = req.query.city;
-    const filteredBikes = data.filter((point) => point.city === city);
-    const numberOfBikes = filteredBikes.length;
+    const minpower = parseInt(req.query.minpower);
+    const maxpower = parseInt(req.query.maxpower);
+    const minage = parseInt(req.query.minage);
+    const maxage = parseInt(req.query.maxage);
+    const filteredBikes = data.filter((point) => {
+      const isSameCity = point.city === city;
+      const isMinPower = point.power >= minpower;
+      const isMaxPower = point.power <= maxpower;
+      const isMinAge = point.age >= minage;
+      const isMaxAge = point.age <= maxage;
+      return isSameCity && isMinPower && isMaxPower && isMinAge && isMaxAge;
+    });
+    /*const numberOfBikes = filteredBikes.length;
 
     const response = {
       [city]: numberOfBikes,
     };
 
-    res.status(200).send(response);
+    console.log(filteredBikes, city, minpower, maxpower);*/
+    res.status(200).send(filteredBikes);
   });
   //#endregion
 
