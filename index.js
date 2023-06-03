@@ -254,9 +254,9 @@ async function main() {
   });
   //#endregion
 
-  // GET API: number-of-bikes?brand=
+  // GET API: number-of-brand-bikes?brand=
   //#region
-  app.get("/number-of-bikes", function (req, res) {
+  app.get("/number-of-brand-bikes", function (req, res) {
     const brand = req.query.brand;
     const filteredBikes = data.filter((point) => point.brand === brand);
     const numberOfBikes = filteredBikes.length;
@@ -269,9 +269,24 @@ async function main() {
   });
   //#endregion
 
-  // *GET API: number-of-bikes?city=
+  // GET API: number-of-age-bikes?age=
   //#region
-  app.get("/number-of-bikes", function (req, res) {
+  app.get("/number-of-age-bikes", function (req, res) {
+    const age = parseInt(req.query.age);
+    const filteredBikes = data.filter((point) => point.age === age);
+    const numberOfBikes = filteredBikes.length;
+
+    const response = {
+      [age]: numberOfBikes,
+    };
+
+    res.status(200).send(response);
+  });
+  //#endregion
+
+  // *GET API: number-of-city-bikes?city=
+  //#region
+  app.get("/number-of-city-bikes", function (req, res) {
     const city = req.query.city;
     const filteredBikes = data.filter((point) => point.city === city);
     const numberOfBikes = filteredBikes.length;
@@ -298,7 +313,7 @@ async function main() {
   });
   //#endregion
 
-  // GET API: number-of-bikes?city=&minpower=&maxpower=&minage=&maxage=&brand=&minkms_driven=&maxkms_driven=&minprice=&maxprice=
+  // GET API: filter-bikes?city=&minpower=&maxpower=&minage=&maxage=&brand=&minkms_driven=&maxkms_driven=&minprice=&maxprice=
   //#region
   app.get("/filter-bikes", function (req, res) {
     const city = req.query.city;

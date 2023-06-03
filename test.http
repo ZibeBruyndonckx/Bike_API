@@ -47,11 +47,16 @@ Content-type: application/json
 
 ###
 
-GET http://localhost/number-of-bikes?brand=Hero HTTP/1.1
+GET http://localhost/number-of-brand-bikes?brand=Hero HTTP/1.1
 
-### 
+###
 
-GET http://localhost/number-of-bikes?city=Delhi HTTP/1.1
+GET http://localhost/number-of-age-bikes?age=4 HTTP/1.1
+
+
+###
+
+GET http://localhost/number-of-city-bikes?city=Delhi HTTP/1.1
 
 
 ###
