@@ -47,6 +47,22 @@ test('"can get bikes from powers"', async () => {
 });
 //#endregion
 
+// Write your test cases: can get bikes from brands
+//#region
+test('"can get bikes from brands"', async () => {
+  const res = await fetch("http://localhost/bikes-per-brand");
+  expect(res.ok).toBe(true);
+  const data = await res.json();
+  expect(data.brands).not.toBe(undefined);
+  expect(data.brands.Hero).toBe(2862); // This is to check the amount of brand Hero in the dataset
+  expect(data.brands.Honda).toBe(1226); // This is to check the amount of brand Honda in the dataset
+  expect(data.brands.MV).toBe(4); // This is to check the amount of brand MV in the dataset
+  expect(data.brands.Yezdi).toBe(1); // This is to check the amount of brand Yedzi in the dataset
+  const amountOfBrands = Object.keys(data.brands).length;
+  expect(amountOfBrands).toBe(33 - 10); // This is the amount of different brands in this dataset
+});
+//#endregion
+
 // Write your test cases: can get bikes from cities
 //#region
 test('"can get bikes from cities"', async () => {
