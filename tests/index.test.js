@@ -24,16 +24,28 @@ test('"testsss are working"', async () => {
   expect(true).toBe(true);
 });
 
-// Write your test cases: can get bikes from dehli
-test('"can get bikes from dehli"', async () => {
-  const res = await fetch("http://localhost/number-of-city-bikes?city=Delhi");
+// Write your test cases: can get bikes from powers
+//#region
+test('"can get bikes from powers"', async () => {
+  const res = await fetch("http://localhost/bikes-per-power");
   expect(res.ok).toBe(true);
   const data = await res.json();
-  expect(data.Delhi).not.toBe(undefined);
-  expect(data.Delhi).toBe(3383); // This is the amount of bikes in Delhi in this dataset
+  expect(data.powers).not.toBe(undefined);
+  const powerNumber1 = 100;
+  const powerNumber2 = 320;
+  const powerNumber3 = 500;
+  const powerNumber4 = 1000;
+  expect(data.powers[powerNumber1]).toBe(2424); // This is the amount of bikes with power 100 in this dataset
+  expect(data.powers[powerNumber2]).toBe(9); // This is the amount of bikes with power 320 in this dataset
+  expect(data.powers[powerNumber3]).toBe(369); // This is the amount of bikes with power 500 in this dataset
+  expect(data.powers[powerNumber4]).toBe(20); // This is the amount of bikes with power 1000 in this dataset
+  const amountOfPowers = Object.keys(data.powers).length;
+  expect(amountOfPowers).toBe(63 - 10); // This is the amount of diffrent powers in this dataset
 });
+//#endregion
 
 // Write your test cases: can get bikes from cities
+//#region
 test('"can get bikes from cities"', async () => {
   const res = await fetch("http://localhost/bikes-per-city");
   expect(res.ok).toBe(true);
@@ -46,3 +58,15 @@ test('"can get bikes from cities"', async () => {
   const amountOfCities = Object.keys(data.cities).length;
   expect(amountOfCities).toBe(442 + 1); // This is the amount of diffrent cities in this dataset
 });
+//#endregion
+
+// Write your test cases: can get bikes from Delhi
+//#region
+test('"can get bikes from Delhi"', async () => {
+  const res = await fetch("http://localhost/number-of-city-bikes?city=Delhi");
+  expect(res.ok).toBe(true);
+  const data = await res.json();
+  expect(data.Delhi).not.toBe(undefined);
+  expect(data.Delhi).toBe(3383); // This is the amount of bikes in Delhi in this dataset
+});
+//#endregion
