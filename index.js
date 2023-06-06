@@ -284,7 +284,7 @@ async function main() {
   });
   //#endregion
 
-  // *GET API: number-of-city-bikes?city=
+  // GET API: number-of-city-bikes?city=
   //#region
   app.get("/number-of-city-bikes", function (req, res) {
     const city = req.query.city;
@@ -299,7 +299,7 @@ async function main() {
   });
   //#endregion
 
-  // *GET API: info-on-bikes?city=
+  // GET API: info-on-bikes?city=
   //#region
   app.get("/info-on-bikes", function (req, res) {
     const city = req.query.city;
@@ -362,4 +362,5 @@ async function main() {
   //#endregion
 
   app.listen(80);
+  process.send("ready");
 }
