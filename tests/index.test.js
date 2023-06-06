@@ -1,3 +1,5 @@
+// SETUP
+//#region
 const { fork } = require("child_process");
 const path = require("path");
 
@@ -23,6 +25,7 @@ afterAll((done) => {
 test('"testsss are working"', async () => {
   expect(true).toBe(true);
 });
+//#endregion
 
 // Write your test cases: can get bikes from powers
 //#region

@@ -1,3 +1,5 @@
+// SETUP
+//#region
 const express = require("express");
 const bodyParser = require("body-parser");
 const csv = require("csv-parser");
@@ -21,7 +23,10 @@ fs.createReadStream("Used_Bikes.csv")
     //console.log(data);
     main();
   });
+//#endregion
 
+// Function main
+//#region
 async function main() {
   const app = express();
 
@@ -364,3 +369,4 @@ async function main() {
   app.listen(80);
   process.send("ready");
 }
+//#endregion

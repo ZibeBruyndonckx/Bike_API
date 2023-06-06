@@ -23,30 +23,6 @@ GET http://localhost/bikes-per-owner HTTP/1.1
 
 ###
 
-GET http://localhost/status HTTP/1.1
-
-###
-
-POST http://localhost/post-data HTTP/1.1
-Content-Type: application/json
-
-{
-    "data": "bike_name,yo,city,kms_driven,owner,age,power,brand,what,color,sort\nHonda CB Hornet 160R,85000.0,Delhi,5000.0,First Owner,2.0,160.0,Honda,appel,red,fruit,sweet\nSuzuki Gixxer SF 155cc,95000.0,Mumbai,8000.0,Second Owner,3.0,155.0,Suzuki\nYamaha R15 V3.0,130000.0,Bangalore,12000.0,First Owner,1.5,155.0,Yamaha\nHonda CB Hornet 160R,85000.0,Delhi,5000.0,First Owner,2.0,160.0,Honda\nSuzuki Gixxer SF 155cc,95000.0,Mumbai,8000.0,Second Owner,3.0,155.0,Suzuki\nHonda CB Hornet 160R,85000.0,Delhi,5000.0,First Owner,2.0,160.0,Honda\nSuzuki Gixxer SF 155cc,95000.0,Mumbai,8000.0,Second Owner,3.0,155.0,Suzuki\nHonda CB Hornet 160R,85000.0,Delhi,5000.0,First Owner,2.0,160.0,Honda\nSuzuki Gixxer SF 155cc,95000.0,Mumbai,8000.0,Second Owner,3.0,155.0,Suzuki\nHonda CB Hornet 160R,85000.0,Delhi,5000.0,First Owner,2.0,160.0,Honda\nSuzuki Gixxer SF 155cc,95000.0,Mumbai,8000.0,Second Owner,3.0,155.0,Suzuki"
-}
-
-###
-
-POST http://localhost/info HTTP/1.1
-Content-type: application/json
-
-{
-    "name": "zibetest1",
-    "age": 16,
-    "sex": "male"
-}
-
-###
-
 GET http://localhost/number-of-brand-bikes?brand=Hero HTTP/1.1
 
 ###
@@ -68,5 +44,29 @@ GET http://localhost/info-on-bikes?city=Pune HTTP/1.1
 
 GET http://localhost/filter-bikes?city=Jaipur&minpower=150&maxpower=160&minage=2&maxage=4&brand=Yamaha&minkms_driven=8000&maxkms_driven=14000&minprice=80000&maxprice=82500 HTTP/1.1
 
+
+###
+
+GET http://localhost/status HTTP/1.1
+
+###
+
+POST http://localhost/post-data HTTP/1.1
+Content-Type: application/json
+
+{
+    "data": "bike_name,yo,city,kms_driven,owner,age,power,brand,what,color,sort\nHonda CB Hornet 160R,85000.0,Delhi,5000.0,First Owner,2.0,160.0,Honda,appel,red,fruit,sweet\nSuzuki Gixxer SF 155cc,95000.0,Mumbai,8000.0,Second Owner,3.0,155.0,Suzuki\nYamaha R15 V3.0,130000.0,Bangalore,12000.0,First Owner,1.5,155.0,Yamaha\nHonda CB Hornet 160R,85000.0,Delhi,5000.0,First Owner,2.0,160.0,Honda\nSuzuki Gixxer SF 155cc,95000.0,Mumbai,8000.0,Second Owner,3.0,155.0,Suzuki\nHonda CB Hornet 160R,85000.0,Delhi,5000.0,First Owner,2.0,160.0,Honda\nSuzuki Gixxer SF 155cc,95000.0,Mumbai,8000.0,Second Owner,3.0,155.0,Suzuki\nHonda CB Hornet 160R,85000.0,Delhi,5000.0,First Owner,2.0,160.0,Honda\nSuzuki Gixxer SF 155cc,95000.0,Mumbai,8000.0,Second Owner,3.0,155.0,Suzuki\nHonda CB Hornet 160R,85000.0,Delhi,5000.0,First Owner,2.0,160.0,Honda\nSuzuki Gixxer SF 155cc,95000.0,Mumbai,8000.0,Second Owner,3.0,155.0,Suzuki"
+}
+
+###
+
+POST http://localhost/info HTTP/1.1
+Content-type: application/json
+
+{
+    "name": "zibetest1",
+    "age": 16,
+    "sex": "male"
+}
 
 ###
