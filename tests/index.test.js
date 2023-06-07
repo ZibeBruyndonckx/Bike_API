@@ -131,11 +131,22 @@ test('"can get bikes from Delhi city"', async () => {
 // Write your test cases: can get bikes from Hero brand
 //#region
 test('"can get bikes from the Hero brand"', async () => {
-  const res = await fetch("http://localhost/bikes-per-brand");
+  const res = await fetch("http://localhost/number-of-brand-bikes?brand=Hero");
   expect(res.ok).toBe(true);
   const data = await res.json();
-  expect(data.brands).not.toBe(undefined);
-  const brand = "Hero";
-  expect(data.brands[brand]).toBe(2862); // This is the expected number of bikes for the Hero brand in the dataset
+  expect(data.Hero).not.toBe(undefined);
+  expect(data.Hero).toBe(2862); // This is the expected number of bikes for the Hero brand in the dataset
+});
+//#endregion
+
+// Write your test cases: can get bikes from age 4
+//#region
+test('"can get bikes from age 4"', async () => {
+  const res = await fetch("http://localhost/number-of-age-bikes?age=4");
+  expect(res.ok).toBe(true);
+  const data = await res.json();
+  const ageNumber = 4;
+  expect(data[ageNumber]).not.toBe(undefined);
+  expect(data[ageNumber]).toBe(2419); // This is the expected number of bikes for age 4 in the dataset
 });
 //#endregion
