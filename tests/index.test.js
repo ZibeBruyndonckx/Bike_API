@@ -117,13 +117,25 @@ test('"can get bikes from owners"', async () => {
 });
 //#endregion
 
-// Write your test cases: can get bikes from Delhi
+// Write your test cases: can get bikes from Delhi city
 //#region
-test('"can get bikes from Delhi"', async () => {
+test('"can get bikes from Delhi city"', async () => {
   const res = await fetch("http://localhost/number-of-city-bikes?city=Delhi");
   expect(res.ok).toBe(true);
   const data = await res.json();
   expect(data.Delhi).not.toBe(undefined);
   expect(data.Delhi).toBe(3383); // This is the amount of bikes in Delhi in this dataset
+});
+//#endregion
+
+// Write your test cases: can get bikes from Hero brand
+//#region
+test('"can get bikes from the Hero brand"', async () => {
+  const res = await fetch("http://localhost/bikes-per-brand");
+  expect(res.ok).toBe(true);
+  const data = await res.json();
+  expect(data.brands).not.toBe(undefined);
+  const brand = "Hero";
+  expect(data.brands[brand]).toBe(2862); // This is the expected number of bikes for the Hero brand in the dataset
 });
 //#endregion
