@@ -79,6 +79,44 @@ test('"can get bikes from cities"', async () => {
 });
 //#endregion
 
+// Write your test cases: can get bikes from ages
+//#region
+test('"can get bikes from ages"', async () => {
+  const res = await fetch("http://localhost/bikes-per-age");
+  expect(res.ok).toBe(true);
+  const data = await res.json();
+  expect(data.ages).not.toBe(undefined);
+  const ageNumber1 = 2;
+  const ageNumber2 = 10;
+  const ageNumber3 = 20;
+  const ageNumber4 = 30;
+  expect(data.ages[ageNumber1]).toBe(385); // This is the amount of bikes with age 1 in this dataset
+  expect(data.ages[ageNumber2]).toBe(648); // This is the amount of bikes with age 5 in this dataset
+  expect(data.ages[ageNumber3]).toBe(7); // This is the amount of bikes with age 10 in this dataset
+  expect(data.ages[ageNumber4]).toBe(1); // This is the amount of bikes with age 15 in this dataset
+  const amountOfAges = Object.keys(data.ages).length;
+  expect(amountOfAges).toBe(45 - 10); // This is the amount of different ages in this dataset
+});
+//#endregion
+
+// Write your test cases: can get bikes from owners
+//#region
+test('"can get bikes from owners"', async () => {
+  const res = await fetch("http://localhost/bikes-per-owner");
+  expect(res.ok).toBe(true);
+  const data = await res.json();
+  expect(data.owners).not.toBe(undefined);
+  const owner1 = "First Owner";
+  const owner2 = "Second Owner";
+  const owner3 = "Third Owner";
+  const owner4 = "Fourth Owner Or More";
+  expect(data.owners[owner1]).toBe(14620);
+  expect(data.owners[owner2]).toBe(1259);
+  expect(data.owners[owner3]).toBe(108);
+  expect(data.owners[owner4]).toBe(12);
+});
+//#endregion
+
 // Write your test cases: can get bikes from Delhi
 //#region
 test('"can get bikes from Delhi"', async () => {

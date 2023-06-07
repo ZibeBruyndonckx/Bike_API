@@ -29,21 +29,17 @@ GET http://localhost/number-of-brand-bikes?brand=Hero HTTP/1.1
 
 GET http://localhost/number-of-age-bikes?age=4 HTTP/1.1
 
-
 ###
 
 GET http://localhost/number-of-city-bikes?city=Delhi HTTP/1.1
-
-
-###
-
-GET http://localhost/info-on-bikes?city=Pune HTTP/1.1
-
 
 ###
 
 GET http://localhost/filter-bikes?city=Jaipur&minpower=150&maxpower=160&minage=2&maxage=4&brand=Yamaha&minkms_driven=8000&maxkms_driven=14000&minprice=80000&maxprice=82500 HTTP/1.1
 
+###
+
+GET http://localhost/info-on-bikes?city=Pune HTTP/1.1
 
 ###
 
