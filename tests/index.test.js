@@ -150,3 +150,29 @@ test('"can get bikes from age 4"', async () => {
   expect(data[ageNumber]).toBe(2419); // This is the expected number of bikes for age 4 in the dataset
 });
 //#endregion
+
+// Write your test cases: can get bikes for anything
+//#region
+test('"can filter bikes by parameters"', async () => {
+  const url =
+    "http://localhost/filter-bikes?city=Jaipur&minpower=150&maxpower=160&minage=2&maxage=4&brand=Yamaha&minkms_driven=8000&maxkms_driven=14000&minprice=80000&maxprice=82500";
+  const res = await fetch(url);
+  expect(res.ok).toBe(true);
+  const data = await res.json();
+  expect(Array.isArray(data)).toBe(true);
+  expect(data.length).toBe(2);
+  const bike = data[0];
+  expect(data[0]).not.toBe(undefined);
+  expect(bike.bike_name).toEqual(expect.any(String));
+  expect(bike.price).toEqual(expect.any(Number));
+  expect(bike.city).toEqual("Jaipur");
+  expect(bike.kms_driven).toBeGreaterThanOrEqual(8000);
+  expect(bike.kms_driven).toBeLessThanOrEqual(14000);
+  expect(bike.owner).toEqual(expect.any(String));
+  expect(bike.age).toBeGreaterThanOrEqual(2);
+  expect(bike.age).toBeLessThanOrEqual(4);
+  expect(bike.power).toBeGreaterThanOrEqual(150);
+  expect(bike.power).toBeLessThanOrEqual(160);
+  expect(bike.brand).toEqual("Yamaha");
+});
+//#endregion
