@@ -27,6 +27,11 @@ test('"testsss are working"', async () => {
 });
 //#endregion
 
+// Write your test cases: can get bikes from ?
+//#region
+
+//#endregion
+
 // Write your test cases: can get bikes from powers
 //#region
 test('"can get bikes from powers"', async () => {
@@ -117,17 +122,6 @@ test('"can get bikes from owners"', async () => {
 });
 //#endregion
 
-// Write your test cases: can get bikes from Delhi city
-//#region
-test('"can get bikes from Delhi city"', async () => {
-  const res = await fetch("http://localhost/number-of-city-bikes?city=Delhi");
-  expect(res.ok).toBe(true);
-  const data = await res.json();
-  expect(data.Delhi).not.toBe(undefined);
-  expect(data.Delhi).toBe(3383); // This is the amount of bikes in Delhi in this dataset
-});
-//#endregion
-
 // Write your test cases: can get bikes from Hero brand
 //#region
 test('"can get bikes from the Hero brand"', async () => {
@@ -148,6 +142,17 @@ test('"can get bikes from age 4"', async () => {
   const ageNumber = 4;
   expect(data[ageNumber]).not.toBe(undefined);
   expect(data[ageNumber]).toBe(2419); // This is the expected number of bikes for age 4 in the dataset
+});
+//#endregion
+
+// Write your test cases: can get bikes from Delhi city
+//#region
+test('"can get bikes from Delhi city"', async () => {
+  const res = await fetch("http://localhost/number-of-city-bikes?city=Delhi");
+  expect(res.ok).toBe(true);
+  const data = await res.json();
+  expect(data.Delhi).not.toBe(undefined);
+  expect(data.Delhi).toBe(3383); // This is the amount of bikes in Delhi in this dataset
 });
 //#endregion
 
