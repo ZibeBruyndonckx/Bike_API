@@ -27,8 +27,32 @@ test('"testsss are working"', async () => {
 });
 //#endregion
 
-// Write your test cases: can get bikes from ?
+// Write your test cases: can get bikes from ?*
 //#region
+test("can get bikes from ?", async () => {
+  const res = await fetch("http://localhost/bikes-per-?");
+  expect(res.ok).toBe(true);
+  const data = await res.json();
+  expect(data.datas).toBeDefined();
+  const firstBike = data.datas.bike1;
+  expect(firstBike.bike_name).toBe("TVS Star City Plus Dual Tone 110cc");
+  expect(firstBike.price).toBe(35000);
+  expect(firstBike.kms_driven).toBe(17654);
+  const secondBike = data.datas.bike2;
+  expect(secondBike.bike_name).toBe("Royal Enfield Classic 350cc");
+  expect(secondBike.price).toBe(119900);
+  expect(secondBike.kms_driven).toBe(11000);
+  const thirdBike = data.datas.bike3;
+  expect(thirdBike.bike_name).toBe("Triumph Daytona 675R");
+  expect(thirdBike.price).toBe(600000);
+  expect(thirdBike.kms_driven).toBe(110);
+  const seventyThirdBike = data.datas.bike73;
+  expect(seventyThirdBike.bike_name).toBe("Royal Enfield Thunderbird 350cc");
+  expect(seventyThirdBike.price).toBe(65000);
+  expect(seventyThirdBike.kms_driven).toBe(9800);
+  const amountOfDatas = Object.keys(data.datas).length;
+  expect(amountOfDatas).toBe(15999); // This is the amount of diffent bikes in this database
+});
 
 //#endregion
 
@@ -156,7 +180,7 @@ test('"can get bikes from Delhi city"', async () => {
 });
 //#endregion
 
-// Write your test cases: can get bikes for anything
+// Write your test cases: can get bikes for anything*
 //#region
 test('"can filter bikes by parameters"', async () => {
   const url =

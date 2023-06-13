@@ -95,14 +95,13 @@ async function main() {
       dataNoThings.push(newPoint);
     }
 
-    let datas = [];
-    for (let i = 0; i < numberOfThings && i < dataNoThings.length; i++) {
-      datas.push(dataNoThings[i]);
-    }
-
     const response = {
-      datas: datas,
+      datas: {},
     };
+
+    for (let i = 0; i < numberOfThings && i < dataNoThings.length; i++) {
+      response.datas[`bike${i + 1}`] = dataNoThings[i];
+    }
 
     res.status(200).send(response);
   });
